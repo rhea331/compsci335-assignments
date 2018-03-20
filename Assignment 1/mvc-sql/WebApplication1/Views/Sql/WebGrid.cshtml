@@ -1,0 +1,61 @@
+﻿@model IEnumerable<WebApplication1.Controllers.MyModel>
+@{
+    ViewBag.Title = "WebGrid";
+    var grid = new WebGrid(null,
+        defaultSort: ViewBag.sortCol,
+        sortFieldName: "sortCol",
+        sortDirectionFieldName: "sortDir",
+        rowsPerPage: ViewBag.rowsPerPage);
+    grid.Bind(Model, rowCount: ViewBag.count, autoSortAndPage: false);
+}
+@functions{ 
+    public string ArrowConcat(string sortCol)
+    {
+        if (sortCol == ViewBag.sortCol)
+        {
+            if (ViewBag.sortDir == "ASC")
+            {
+                return "▼";
+            } else return "▲";
+        }return "";
+    }
+    }
+<STYLE type="text/css">
+    .OrderID { width: 80px; text-align: right;}
+    .OrderDate { width: 200px; text-align: right;}
+    .Freight { width: 80px; text-align: right;}
+    .ShipCity { width: 60px; border-width: 1px; border-color: black;}
+    .ShipCountry { width: 160px; border-width: 1px; border-color: black;}
+    .CompanyName { width: 160px; border-width: 1px; border-color: black;}
+    .ContactName { width: 160px; border-width: 1px; border-color: black;}
+    .EmpFirstName { width: 160px; border-width: 1px; border-color: black;}
+    .EmpLastName { width: 160px; border-width: 1px; border-color: black;}
+    .table, td, tr{ border-width: 1px; border-color: black; border-style:solid}
+</STYLE>
+<h2>WebGrid</h2>
+
+<div>
+    @grid.GetHtml(
+        tableStyle: "table",
+        columns: grid.Columns(
+            grid.Column(header: "OrderID"+ArrowConcat("OrderID"), columnName: "OrderID", style: "OrderID"),
+            grid.Column(header: "Order Date"+ ArrowConcat("OrderDate"), columnName: "OrderDate", style: "OrderDate"),
+            grid.Column(header: "Freight"+ ArrowConcat("Freight"), columnName: "Freight", style: "Freight", format: @<text>@((item.Freight).ToString("C"))</text>),
+            grid.Column(header: "Ship City" + ArrowConcat("ShipCity"), columnName: "ShipCity", style: "ShipCity"),
+            grid.Column(header: "Ship Country"+ ArrowConcat("ShipCountry"), columnName: "ShipCountry", style: "ShipCountry"),
+            grid.Column(header: "Company Name" + ArrowConcat("CompanyName"), columnName: "CompanyName", style: "CompanyName"),
+            grid.Column(header: "Contact Name"+ ArrowConcat("ContactName"), columnName: "ContactName", style: "ContactName"),
+            grid.Column(header: "Emp First Name"+ ArrowConcat("EmpFirstName"), columnName: "EmpFirstName", style: "EmpFirstName"),
+            grid.Column(header: "Emp Last Name"+ ArrowConcat("EmpLastName"), columnName: "EmpLastName", style: "EmpLastName")
+        ),
+        mode: WebGridPagerModes.All
+    )
+
+ 
+</div>
+<div style="max-width: 100%;">
+    <h4>Request SQL:</h4>
+    <textarea id="styled" rows="16" cols="100" style="max-width: 100%;">
+        @ViewBag.sql
+    </textarea>
+</div>
