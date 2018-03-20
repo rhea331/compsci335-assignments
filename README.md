@@ -19,7 +19,7 @@ ODATA SQL AND XML: 42/45
 
 MVC SQL: 48.35/55
 
-Mistakes: 	4 Failed XML tests
-
+Mistakes: 	
+			4 Failed XML tests
 			MVC: Arrows upside down, No order by indication at end of table
 			
