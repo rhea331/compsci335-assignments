@@ -8,6 +8,10 @@ Assignment 1: Three parts
 
 3: Making a OData service retrieving data from XML documents
 
+Requires Northwind database and XML files to be located in C:/usertmp
+
+Additional information can be found in the Assignment#1.pdf. File by University of Auckland.
+
 Final mark: 
 
 ODATA SQL AND XML: 42/45
