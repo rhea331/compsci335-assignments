@@ -25,7 +25,7 @@ MVC SQL: 48.35/55
 
 MVC: Arrows upside down, No order by indication at end of table
 
-### Assignment 2
+## Assignment 2
 
 Making a website consuming data from a data source. Also penetration-testing the service.
 
@@ -33,4 +33,6 @@ Doesn't work anymore since the data source doesn't exist anymore
 
 Additional information can be found in the given HTML page. File by University of Auckland
 
-### Final Mark 91/100
+### Final Mark
+
+91/100
