@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> A2 Assignment </title>
+	<link rel="stylesheet" href="a2.css">
+	<script src="a2.js"></script>
+	<script>
+	window.onload = showTabHome;
+	</script>
+</head>
+<body>
+	<header>
+	<img id="logo" src = "http://redsox.tcs.auckland.ac.nz/ups/logo.svg" alt ="Logo" width="128" height = "128">
+	<table id="header" style = "width:100%">
+	<tr>
+		<td id = TabHome class = "center" onclick = "showTabHome();">
+			Home
+		</td>
+		<td id = TabPeople class = "center" onclick = "showTabPeople();">
+			People
+		</td>
+		<td id = TabCourses class = "center" onclick = "showTabCourses();">
+			Courses
+		</td>
+		<td id = TabNews class = "center" onclick = "showTabNews();">
+			News
+		</td>
+		<td id = TabNotices class = "center" onclick = "showTabNotices();"> 
+			Notices
+		</td>
+		<td id = TabGuestbook class = "center" onclick = "showTabGuestbook();"> 
+			Guestbook
+		</td>
+	</tr>
+	</table>
+	</header>
+	<div id="SectionHome">
+		<section>
+			<h3>
+				Welcome to New Zealand's leading computer science department. We pride ourselves on the excellence of our staff and our students.
+			</h3>
+		</section>
+	</div>
+	<div id="SectionPeople">
+		<section>
+			<h1>
+				People
+			</h1>
+			<div id = "show_people"> </div>
+		</section>
+	</div>
+	<div id="SectionCourses">
+		<section>
+			<h1>
+				Courses
+			</h1>
+			<div id = "show_courses">Loading Courses </div>
+		</section>
+	</div>
+	<div id = "SectionNews">
+		<section>
+			<h1>
+				News
+			</h1>
+			<div id = "show_news"> Loading News </div>
+		</section>
+	</div>
+	<div id = "SectionNotices">
+		<section>
+			<h1>
+				Notices
+			</h1>
+			<div id = "show_notices"> Loading Notices </div>
+		</section>
+	</div>
+		<div id = "SectionGuestbook">
+		<section>
+			<h1>
+				Guestbook
+			</h1>
+			<div id = "show_guestbook"> 
+				<div id="send_guestbook">
+					Name<br><input type = "text" id="Name"><br><br>
+					Comment<br><textarea name = "text" id="Comment"></textarea>
+					<br><br><button onclick = "sendComment()">Send</button>
+				</div>
+				<br><br>
+				<iframe id = "guestbook" src = "http://redsox.tcs.auckland.ac.nz/ups/UniProxService.svc/htmlcomments" scroll> Loading guestbook </iframe>
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
+</html>

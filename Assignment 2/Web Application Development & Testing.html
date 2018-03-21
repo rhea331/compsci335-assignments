@@ -1,0 +1,333 @@
+
+<!-- saved from url=(0069)https://www.cs.auckland.ac.nz/courses/compsci335s2c/assignments/mano/ -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <title>Web Application Development &amp; Testing</title>
+</head>
+<body>
+   <h2>
+      Web Application Development &amp; Testing
+   </h2>
+   <p style="border: 1px solid red; border-radius: 5px; padding: 10px;
+        background-color: pink; color: red;">
+      <span style="font-size: xx-large;">⚠</span>
+      To share assignment solutions and source code is not permitted under our academic honesty policy.
+      Violation of this will result in your assignment submission attracting no marks,
+      and you may face disciplinary actions in addition.
+   </p>
+   <h3>
+      Background
+   </h3>
+   <p>
+      Most of our University websites are not easily viewable on smart devices with small
+      screen (e.g. iOS, Android smartphones). As an example, access the
+      <a href="https://www.cs.auckland.ac.nz/">
+         Computer Science website
+      </a> from a smartphone, and see how easy or difficult
+      it is to read and navigate.
+   </p>
+   <p>
+      One of the good approaches to fix this is to have an architecture that
+      (1) separates information content from the user-interface
+      and to make available the information as a service (e.g., a web service), and
+      (2) allows thin-client applications for smart devices that consume the information service and
+      render the information in such a way that fits well within the interface paradigm of the device.
+      This is an approach taken by a number of news media providers (such as BBC and New Zealand
+      Herald) to provide a richer experience to the readers.
+      The application constructed in (2) could be a native device application or it could
+      be a responsive web application.
+   </p>
+   <p>
+      This assignment looks at the separation of data from the UI, and how such data can
+      be consumed and used in the end-user application. It also looks at potential vulnerabilities
+      that could arise from such an architecture.
+   </p>
+   <p>
+      A number of data sources that supply key information content that is part of the Computer Science
+      site have been identified. These enable separation of information content from the
+      presentation.
+   </p>
+   <p>
+      A brief description of data sources is given below.
+   </p>
+   <ol>
+      <li>
+         Get a detailed list of staff. The URL <a href="https://unidirectory.auckland.ac.nz/rest/search?orgFilter=COMSCI">
+            https://unidirectory.auckland.ac.nz/rest/search?orgFilter=COMSCI
+         </a> provides this list.
+         <br>
+         Photos of staff
+         could be obtained from URLs of the form
+         <a href="https://unidirectory.auckland.ac.nz/people/imageraw/rnic033/10300628/small">https://unidirectory.auckland.ac.nz/people/imageraw/{PersonID}/{Imageid}/small</a>
+         where the two IDs are available in the staff list.
+         Address book entries for each staff,
+         in the form of a <a href="http://en.wikipedia.org/wiki/VCard">
+            vCard
+         </a>, can be obtained from <a href="https://unidirectory.auckland.ac.nz/people/vcard/rnic033">
+            https://unidirectory.auckland.ac.nz/people/vcard/{PersonID}
+         </a>.
+      </li>
+      <li>
+         Get a feed of current news items. The URL <a href="https://www.cs.auckland.ac.nz/en/about/newsandevents/news/_jcr_content/par/newssearchlist.rss">
+            https://www.cs.auckland.ac.nz/en/about/newsandevents/news/_jcr_content/par/newssearchlist.rss
+         </a>
+         provides this feed.
+      </li>
+      <li>
+         Get a feed of current notices. The URL <a href="https://www.cs.auckland.ac.nz/en/about/newsandevents/notices/_jcr_content/par/noticesearchlist.rss">
+            https://www.cs.auckland.ac.nz/en/about/newsandevents/notices/_jcr_content/par/noticesearchlist.rss
+         </a>
+         provides this feed.
+      </li>
+   </ol>
+   <p>
+      Firstly, study these data sources carefully.
+      You can experiment with the sources using your browser and the inspection tools
+      available with your browser
+      (e.g., <em>Web Inspector</em> on Safari, <a href="https://getfirebug.com/"><em>Firebug</em></a>
+      on Firefox, or <em>F12</em> on Chrome and IE). You may also wish to use HTTP debugging
+      tools such as <a href="http://www.telerik.com/fiddler">Fiddler</a>, <a href="https://www.cs.auckland.ac.nz/courses/compsci215s1c/resources/mano/W3Client-MacOS-10_10-x64.zip">
+         W3Client (MacOS)
+      </a>, and <a href="https://www.cs.auckland.ac.nz/courses/compsci215s1c/resources/mano/W3Client.exe">
+         W3Client (Windows)
+      </a>.
+   </p>
+   <h3>A Test Application</h3>
+   <p>
+      Firstly, attempt to build a simple test application consuming the staff list data source.
+      We want you to observe the difficulties in doing this. Read the Wiki article
+      <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">https://en.wikipedia.org/wiki/Cross-origin_resource_sharing</a>
+      and how this article relates to the difficulties you may have faced.
+   </p>
+   <h3>Test Application - Take 2</h3>
+   <p>
+      You are now asked to experiment with the data sources provided at
+      <a href="http://redsox.tcs.auckland.ac.nz/ups/UniProxService.svc/help">
+         http://redsox.tcs.auckland.ac.nz/ups/UniProxService.svc/help
+      </a>.
+      Attempt to build another test application consuming the staff list data source
+      that is available
+      at <a href="http://redsox.tcs.auckland.ac.nz/ups/UniProxService.svc/people">
+         http://redsox.tcs.auckland.ac.nz/ups/UniProxService.svc/people
+      </a>.
+      We want you to observe that consuming this source within the application
+      does not pose any issue. Now see what makes this data source different from
+      the one you tried earlier.
+   </p>
+   <h3>Computer Science @ UoA</h3>
+   <p>
+      You are now ready to build the real application consuming the data offered
+      at <a href="http://redsox.tcs.auckland.ac.nz/ups/UniProxService.svc/help">
+         http://redsox.tcs.auckland.ac.nz/ups/UniProxService.svc/help
+      </a>.
+      You may use the University logo available at
+      <a href="http://redsox.tcs.auckland.ac.nz/ups/logo.svg">http://redsox.tcs.auckland.ac.nz/ups/logo.svg</a>
+      as you deem fit.
+   </p>
+   <p>
+      The application should consist of the following logical sections:
+   </p>
+   <dl>
+      <dt>Home</dt>
+      <dd>
+         This section contains an introduction to the Department.
+         You could borrow the brief introduction provided at the Department's current
+         page. For example,
+         <em>
+            "Welcome to New Zealand's leading computer science department.
+            We pride ourselves on the excellence of our staff and our students."
+         </em>
+      </dd>
+      <dt>Courses</dt>
+      <dd>
+         This is a list of courses offered by the Department.
+      </dd>
+      <dt>People</dt>
+      <dd>
+         This is a list of staff at the Department. You would want to provide
+         means of contacting them (such as email and telephone) as well as the
+         means to save details in an address book (the
+         <a href="http://en.wikipedia.org/wiki/VCard">
+            vCards
+         </a> come handy here).
+      </dd>
+      <dt>News</dt>
+      <dd>
+         This is the current news feed.
+      </dd>
+      <dt>Notices</dt>
+      <dd>
+         This is the current notices feed.
+      </dd>
+      <dt>Guest Book</dt>
+      <dd>
+         This is where guest comments can be entered into.
+      </dd>
+   </dl>
+   <p>
+      The application should use a combination of HTML, CSS, and JavaScript.
+      Where the application needs icons, please consider using an appropriate Unicode character that represents the icon.
+      For example, please note that the "caution" sign (<span style="font-size: normal;">⚠</span>) used earlier
+      in this page is a Unicode character.
+   </p>
+   <p>
+      Please note the following requirements.
+   </p>
+   <ol>
+      <li>
+         You are <em>not</em> allowed to use any libraries or frameworks.
+      </li>
+      <li>
+         The application should contain a single HTML page (named
+         <em>index.html</em>).
+      </li>
+      <li>
+         The application should work on any modern browser (such as Chrome, Safari and Edge).
+      </li>
+      <li>
+         The application should work on small screen devices.
+         You can test this by making your browser window narrow.
+      </li>
+   </ol>
+   <p>
+      This application, unlike the two test applications, is marked, and should be of a professional quality to attract full marks.
+      You should pay attention to details.
+   </p>
+   <h3>
+      Pen-Testing the Service
+   </h3>
+   <p>
+      It is thought the back-end service has a number of vulnerabilities. You are now asked to
+      penetration-test the service, and report your findings.
+   </p>
+   <p>
+      For this part, you will use local versions of the service and its associated data.
+      To this end, please download copies of the service and the data first.
+      You also need to change the <em>Web.config</em> file in the service to point
+      to the local location where you have saved the data.
+   </p>
+   <ol>
+      <li>
+         <a href="https://www.cs.auckland.ac.nz/courses/compsci335s2c/assignments/mano/Svc.zip">
+            Service
+         </a>. Unzip the service and place it in a folder such as <em>H:\335\A2\Svc</em>.
+      </li>
+      <li>
+         <a href="https://www.cs.auckland.ac.nz/courses/compsci335s2c/assignments/mano/CSUoAData.zip">
+            Data
+         </a>. Unzip the data and place it in a folder such as <em>H:\335\A2\Data</em>.
+      </li>
+      <li>
+         Now open the Web.config file in the service folder, and find the line:
+         <br>
+         &lt;add key="DataRoot" value="C:/WebRoot/CSUoAData/"/&gt;<br>
+         Change the value field to reflect where you saved the data.
+         E.g., <em>H:\335\A2\Data\CSUoAData</em>.
+      </li>
+      <li>
+         You can then run the service using the following command line:<br>
+         <em>"C:\Program Files\IIS Express\IISExpress.exe" /port:8188 /path:H:\335\A2\Svc</em><br>
+         <br>
+         If you want to run IIS Express from a Windows PowerShell, you need to prefix the above command line with &amp;
+         so that PowerShell can execute the command (rather than treating the command as a string):<br>
+         <em>&amp; "C:\Program Files\IIS Express\IISExpress.exe" /port:8188 /path:H:\335\A2\Svc</em><br>
+         <br>
+         Test the service by pointing your browser to <a href="http://localhost:8188/UniProxService.svc/help">
+            http://localhost:8188/UniProxService.svc/help
+         </a>. The browser is expected to show the
+         API doc you saw at <a href="http://redsox.tcs.auckland.ac.nz/ups/UniProxService.svc/help">
+            http://redsox.tcs.auckland.ac.nz/ups/UniProxService.svc/help
+         </a>.
+         <br>
+         If the data and the service are correctly set up, you should see a detailed
+         list of staff when you point your browser to
+         <a href="http://localhost:8188/UniProxService.svc/people">http://localhost:8188/UniProxService.svc/people</a>.
+         Note that the output shown in the browser may not be well-formatted, and in this
+         case, you may wish to view the source to see the unformatted content.
+
+      </li>
+   </ol>
+   <p>
+   </p>
+   <p>
+      You may find it helpful to use the UI you have already developed. This will require
+      you to change the service URI base in your UI implementation to point to the local service.
+      While you may use the UI for the initial testing, you must verify your observations
+      using a standalone HTTP tool such as
+      <a href="https://www.cs.auckland.ac.nz/courses/compsci215s1c/resources/mano/W3Client.exe">
+         W3Client
+      </a>.
+   </p>
+   <p>
+      Please answer the questions below. Where the questions require you to
+      write an HTTP request, please provide a URL if the request is GET; if the request
+      is POST, please provide the complete request including all the necessary HTTP headers.
+      E.g.,
+   </p>
+   <div style="border: 1px solid black; border-radius: 5px; padding: 10px;">
+      <span class="code">
+         POST http://www.site.org/foo.cgi?t=Find HTTP/1.1<br>
+         Host: www.site.org<br>
+         Content-Type: text/plain<br>
+         Content-Length: 5<br>
+         <br>
+         Hello<br>
+      </span>
+   </div>
+   <ol>
+      <li>
+         Find out where HTML injection is possible within the service APIs.
+         Write down an HTTP request that inserts an arbitrary image into the UI you constructed.
+      </li>
+      <li>
+         Write down an HTTP request that leads to executing a user-supplied script.
+      </li>
+      <li>
+         Find out where SQL injection is possible within the service APIs.
+         Write down an HTTP request that injects SQL.
+      </li>
+   </ol>
+   <h3>
+      Bonus
+   </h3>
+   <p>
+      Develop a native Android or iOS application consuming the data sources provided.
+      You should not use "boxing" techniques such as that provided
+      by <a href="https://cordova.apache.org/">Apache Cordova</a>, but rather
+      develop natively using Android Studio or XCode.
+      Compare the native application development effort to that of the web application.
+   </p>
+   <p>
+      The bonus part is optional.
+   </p>
+   <h3>
+      Submission
+   </h3>
+   <p>
+      You are required to submit to the <a href="https://adb.auckland.ac.nz/">
+         Assignment Dropbox
+      </a> the following items.
+   </p>
+   <ol>
+      <li>
+         A ZIP archive containing your source files of the CS @ UoA application.
+      </li>
+      <li>
+         A <em>plain text</em> file containing your answers to the pen-testing questions.
+      </li>
+      <li>
+         A copy of the AS-75 form pre-filled with your details.
+         This is optional if you have worked on the assignment solution and source code
+         entirely on your own.
+      </li>
+      <li>
+         A ZIP archive containing the source files of the bonus part - the native application.
+         This is optional and applies only if you have done the bonus part.
+      </li>
+   </ol>
+   <hr>
+   <p>
+      Last updated: <em>Thu 23 Jun 2016 20:29:03 NZST </em>by mano@cs.auckland.ac.nz.
+   </p>
+
+
+</body></html>

